@@ -127,3 +127,4 @@ it('allows a verified user to access the dashboard', function() {
 
     $response->assertOk();
 });
+
