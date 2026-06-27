@@ -62,6 +62,7 @@ it('assigns the created budget to the authenticated user', function() {
 });
 
 it('creates a budget and redirects with success message', function() {
+    /** @var \App\Models\User $user */
     $user = User::factory()->create([
         'email_verified_at' => now()
     ]);
@@ -72,7 +73,9 @@ it('creates a budget and redirects with success message', function() {
         'type' => 'goal'
     ]);
 
-    $response->assertRedirect(route('dashboard'));
+    $budget = Budget::first();
+
+    $response->assertRedirect(route('budgets.show', $budget));
     $response->assertSessionHas('success', 'Presupuesto creado correctamente');
 });
 

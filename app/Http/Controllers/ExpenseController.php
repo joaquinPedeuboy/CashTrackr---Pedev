@@ -6,8 +6,11 @@ use App\Http\Requests\ExpenseRequest;
 use App\Models\Budget;
 use App\Models\Expense;
 use Illuminate\Routing\Attributes\Controllers\Authorize;
+use Illuminate\Routing\Attributes\Controllers\Middleware;
 use Illuminate\Support\Facades\Gate;
 
+#[Middleware('auth')]
+#[Middleware('verified')]
 class ExpenseController extends Controller
 {
 
